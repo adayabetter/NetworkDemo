@@ -1,13 +1,6 @@
 package com.example.networkdemo.base
 
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
-import com.example.networkdemo.databinding.ItemNewsBinding
 
-class BaseViewHolder(view: ItemNewsBinding) : RecyclerView.ViewHolder(view.root) {
-    val imageView: ImageView = view.headerIv
-    val title: TextView = view.titleTv
-    val desc: TextView = view.descTv
-
-}
+class BaseViewHolder<B: ViewDataBinding>(val binding: B) : RecyclerView.ViewHolder(binding.root)

@@ -2,28 +2,22 @@ package com.example.networkdemo.adapter
 
 import android.content.Context
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import com.example.networkdemo.BR
+import com.example.networkdemo.R
 import com.example.networkdemo.base.BaseAdapter
 import com.example.networkdemo.base.BaseViewHolder
 import com.example.networkdemo.bean.NewsBean
-import com.example.networkdemo.databinding.ItemNewsBinding
-import com.example.networkdemo.utils.ImageUtil
 
-class NewsAdapter(context: Context) : BaseAdapter<NewsBean, BaseViewHolder>(context) {
-    override fun onBindVH(holder: BaseViewHolder, position: Int) {
-        val newsBean = mList[position]
-        bindData(holder, newsBean)
+class NewsAdapter(context: Context) : BaseAdapter<NewsBean, BaseViewHolder<*>>(context) {
+    override fun onBindVH(holder: BaseViewHolder<*>, position: Int) {
+        holder.binding.setVariable(BR.newsBean, mList[position])
+        holder.binding.executePendingBindings()
     }
 
-    override fun onCreateVH(parent: ViewGroup, viewType: Int): BaseViewHolder {
-        val view = ItemNewsBinding.inflate(inflater)
-        return BaseViewHolder(view)
-    }
-
-    private fun bindData(holder: BaseViewHolder, newsBean: NewsBean) {
-        if (holder != null && newsBean != null) {
-            ImageUtil.loadImage(holder.imageView, newsBean.thumbnail.get())
-            holder.title.text = newsBean.name.get()
-            holder.desc.text = newsBean.description.get()
-        }
+    override fun onCreateVH(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
+        val dataBinding = DataBindingUtil.inflate<ViewDataBinding>(inflater, R.layout.item_news, parent, false)
+        return BaseViewHolder(dataBinding)
     }
 }

@@ -6,7 +6,7 @@ import io.reactivex.Observable
 import retrofit2.http.GET
 
 interface RetrofitInterface {
-    //获取“分类中搜索商品”的数据
+    //获取“知乎日报”的数据
     @get:GET(UrlConstant.URL_LAST)
     val newsData: Observable<Result?>
 }
