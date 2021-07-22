@@ -8,45 +8,60 @@
             type="com.example.networkdemo.bean.NewsBean" />
     </data>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:padding="15dp">
 
-        <ImageView
-            android:id="@+id/header_iv"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:scaleType="fitCenter"
-            app:imageUrl="@{newsBean.thumbnail}"/>
-
-        <!--标题-->
-        <TextView
-            android:id="@+id/title_tv"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@id/header_iv"
-            android:textColor="#000"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:text="@{newsBean.name}"/>
+            android:orientation="horizontal">
 
-        <!--描述-->
-        <TextView
-            android:id="@+id/desc_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@id/title_tv"
-            android:layout_below="@id/title_tv"
-            android:layout_marginTop="8dp"
-            android:textSize="14sp"
-            android:text="@{newsBean.description}"/>
+            <ImageView
+                android:id="@+id/header_iv"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:scaleType="fitCenter"
+                app:imageUrl="@{newsBean.thumbnail}"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--标题-->
+                <TextView
+                    android:id="@+id/title_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/header_iv"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:text="@{newsBean.name}"/>
+
+                <!--描述-->
+                <TextView
+                    android:id="@+id/desc_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/title_tv"
+                    android:layout_below="@id/title_tv"
+                    android:layout_marginTop="8dp"
+                    android:textSize="14sp"
+                    android:text="@{newsBean.description}"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_alignParentBottom="true"
-            android:background="@color/cardview_dark_background"/>
-    </RelativeLayout>
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:background="#eeeeee"/>
+    </LinearLayout>
 </layout>

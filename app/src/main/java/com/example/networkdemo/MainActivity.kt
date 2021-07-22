@@ -9,6 +9,7 @@ import com.example.networkdemo.base.IBaseView
 import com.example.networkdemo.constant.Constant
 import com.example.networkdemo.databinding.ActivityMainBinding
 import com.example.networkdemo.databinding.RecyclerviewHeaderBinding
+import com.example.networkdemo.utils.ToastUtils
 import com.example.networkdemo.viewmodel.NewsVM
 import com.jcodecraeer.xrecyclerview.ProgressStyle
 import com.jcodecraeer.xrecyclerview.XRecyclerView
@@ -68,10 +69,12 @@ class MainActivity : AppCompatActivity(), XRecyclerView.LoadingListener, IBaseVi
     override fun loadComplete() {
         binding.newsRv.loadMoreComplete()
         binding.newsRv.refreshComplete()
+        ToastUtils.show(this, "加载成功")
     }
 
     override fun loadFailure(message: String) {
         binding.newsRv.loadMoreComplete()
         binding.newsRv.refreshComplete()
+        ToastUtils.show(this, "加载失败了...—_—..")
     }
 }
